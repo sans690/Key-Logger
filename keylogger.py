@@ -28,15 +28,17 @@ def write_file(key):
 
 
 def on_release(key):
-    if key in pressed:
-        pressed[key] = False
+    global pressed
+    if key == Key.shift_l or key == Key.shift_r:
+        pressed = False
 
 
 def on_press(key):
-    if key in pressed:
-        if not pressed[key]:
+    global pressed
+    if key == Key.shift_l or key == Key.shift_r:
+        if not pressed:
             write_file(key)
-        pressed[key] = True
+        pressed = True
     else:
         write_file(key)
 
